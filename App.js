@@ -1,21 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { useScreens } from 'react-native-screens';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import Loading from './app/components/error-loading/Loading';
+import rootSaga from './app/sagas';
+import configureStore from './app/stores';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+useScreens ();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const {runSaga, store, persistor} = configureStore ();
+runSaga (rootSaga);
+
+export default () => (
+  <Provider store={store}>
+    <PersistGate loading={<Loading />} persistor={persistor}>
+      <View>
+        <Text>
+          Hola Mundo
+        </Text>
+      </View>
+    </PersistGate>
+  </Provider>
+);
