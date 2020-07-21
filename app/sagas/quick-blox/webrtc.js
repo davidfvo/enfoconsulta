@@ -1,6 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import QB from 'quickblox-react-native-sdk'
-import NavigationService from '../services/NavigationService'
 import {
   webrtcInitSuccess,
   webrtcInitFail,

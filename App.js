@@ -6,6 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Loading from './app/components/error-loading/Loading';
 import rootSaga from './app/sagas';
 import configureStore from './app/stores';
+import RootScreen from './app/containers/root/RootScreen'
 
 useScreens ();
 
@@ -15,11 +16,7 @@ runSaga (rootSaga);
 export default () => (
   <Provider store={store}>
     <PersistGate loading={<Loading />} persistor={persistor}>
-      <View>
-        <Text>
-          Hola Mundo
-        </Text>
-      </View>
+      <RootScreen />
     </PersistGate>
   </Provider>
 );

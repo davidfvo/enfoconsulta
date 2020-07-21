@@ -1,11 +1,5 @@
 import React from 'react';
-import {KeyboardAvoidingView, StyleSheet} from 'react-native';
-import {
-  Button,
-  View,
-  Content
-} from 'native-base';
-import Text from '../text/Text'
+import {KeyboardAvoidingView, StyleSheet, View} from 'react-native';
 import PropTypes from 'prop-types';
 import Colors from '../../themes/Colors';
 import { IS_IOS } from '../../utils/StyleHelpers';
@@ -17,9 +11,9 @@ const CustomContent = (props) => {
       style={[Styles.container, {backgroundColor: props.color}]} 
       keyboardVerticalOffset={IS_IOS ? 0 : -300}
     >
-      <Content style={[Styles.container, {backgroundColor: props.color}]} contentContainerStyle={props.contentContainerStyle}>
+      <View style={[Styles.container, {backgroundColor: props.color}]}>
         {props.children}
-      </Content>
+      </View>
     </KeyboardAvoidingView>
   );
 }

@@ -35,11 +35,9 @@ const mapStateToProps = state => ({
   error: state.example.getError,
 });
 
-const mapDispatchToProps = dispatch => ({
-  doSomething: request => {
-    dispatch(ExampleActions.examplePayload(request))
-  },
-});
+const mapDispatchToProps = {
+  doSomething: ExampleActions.examplePayload,
+}
 
 export default connect(
   mapStateToProps,

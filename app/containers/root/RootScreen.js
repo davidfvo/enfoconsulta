@@ -1,11 +1,11 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
-import StartupActions from "app/stores/startup/Actions";
+import StartupActions from "../../stores/startup/Actions";
 import React, { Component, useEffect } from "react";
 import { connect } from "react-redux";
-import ImageViewer from "../../components/ImageViewer";
-import VideoPlayer from "../../components/VideoPlayer";
+import ImageViewer from "../../components/image-viewer/ImageViewer";
+import VideoPlayer from "../../components/video-player/VideoPlayer";
 import { isMountedRef, navigationRef } from "../../services/NavigationService";
 import Login from "../login/Login";
 import SplashScreen from "./splash-screen/SplashScreen";
@@ -71,10 +71,10 @@ class RootScreen extends Component {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = {
   appStart,
-  startup: () => dispatch(StartupActions.startup())
-});
+  startup: StartupActions.startup,
+}
 
 export default connect(
   mapStateToProps,

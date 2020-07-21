@@ -85,7 +85,7 @@ export function* QBAuth(request){
           message: 'user created',
         }
       }
-    } catch (error) {}
+    } catch (error) {console.log(error)}
     return {
       code: 'ERROR',
       message: e.message

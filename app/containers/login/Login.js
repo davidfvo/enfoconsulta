@@ -1,19 +1,13 @@
 /**
  * @providesModule login
  */
-import CustomLoading from "app/components/CustomLoading";
-import {
-  Button, Container,
-} from "native-base";
 import React, { Component } from "react";
 import {
-  Animated,
-  Keyboard, View, Text,
-  StatusBar, TouchableOpacity, TextInput
+  StatusBar, Text,
+  TextInput, View, TouchableOpacity, SafeAreaView
 } from "react-native";
 import { connect } from "react-redux";
-import Content from "../../components/content/Content";
-import CustomInputBordered from "../../components/custom-input/CustomInputBordered";
+import CustomLoading from "../../components/error-loading/Loading";
 import AuthActions from "../../stores/auth/Actions";
 import Colors from "../../themes/Colors";
 import Metrics from "../../themes/Metrics";
@@ -50,11 +44,7 @@ export class Login extends Component {
 
   render() {
     return (
-      <Container>
-        <Content
-          color={Colors.backgroundOpaque}
-          contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
-        >
+      <SafeAreaView>
         <StatusBar backgroundColor={Colors.primary} barStyle='light-content'/>
           <View style={{
                 alignContent: "center",
@@ -85,10 +75,8 @@ export class Login extends Component {
           />
           <View style={{ paddingHorizontal: Metrics.mXxl }}>
             <View style={Styles.buttonViewHeight} />
-            <Button
-              rounded
-              block
-              style={{}}
+            <TouchableOpacity
+              style={{backgroundColor: Colors.primary}}
               onPress={() => this.validateCredentials()}
             >
               {this.props.isLoading ? (
@@ -102,10 +90,9 @@ export class Login extends Component {
                   Entrar
                 </Text>
               )}
-            </Button>
+            </TouchableOpacity>
           </View>
-        </Content>
-      </Container>
+      </SafeAreaView>
     );
   }
 }
@@ -115,9 +102,9 @@ const mapStateToProps = state => ({
   QBauth: state.QBauth,
 });
 
-const mapDispatchToProps = dispatch => ({
-  login: request => dispatch(AuthActions.login(request)),
-});
+const mapDispatchToProps = {
+  login: AuthActions.login,
+}
 
 export default connect(
   mapStateToProps,
