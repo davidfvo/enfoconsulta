@@ -8,6 +8,7 @@ import ImageViewer from "../../components/image-viewer/ImageViewer";
 import VideoPlayer from "../../components/video-player/VideoPlayer";
 import { isMountedRef, navigationRef } from "../../services/NavigationService";
 import Login from "../login/Login";
+import Dashboard from "../dashboard/Dashboard"
 import SplashScreen from "./splash-screen/SplashScreen";
 import config from '../../../QBConfig';
 import { appStart } from '../../stores/quick-blox/actions';
@@ -33,6 +34,7 @@ const AppNav = () => {
       {/* Auth */}
       <Stack.Screen name="Login" component={Login} />
       {/* <Stack.Screen name="Dashboard" component={AppNavDashboard} /> */}
+      <Stack.Screen name="Dashboard" component={Dashboard} />
 
     </Stack.Navigator>
   );

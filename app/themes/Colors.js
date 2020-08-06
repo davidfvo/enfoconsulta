@@ -7,7 +7,7 @@
 
 export default {
   // Primary colors:
-  primary: '#009EE3', //00BBEC
+  primary: '#78B259', //00BBEC
   primaryDark: '#2763a6',
   success: 'green',
   error: '#FFFFFF', //FDB062
