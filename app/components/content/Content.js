@@ -6,13 +6,16 @@ import { IS_IOS } from '../../utils/StyleHelpers';
 
 const CustomContent = (props) => {
   return (
-    <KeyboardAvoidingView 
-    behavior={'padding'}
-    style={[Styles.container, {backgroundColor: props.color}]} 
-    keyboardVerticalOffset={IS_IOS ? 0 : -300}
-  >
+    <KeyboardAvoidingView
+      behavior={'padding'}
+      style={[Styles.container, { backgroundColor: props.color }]}
+      keyboardVerticalOffset={IS_IOS ? 0 : -300}
+    >
       <View style={[Styles.container, { backgroundColor: 'transparent' }]}>
-        <View style={Styles.children}/>
+        <View style={[Styles.children, {
+          borderBottomLeftRadius: props.borderBottomLeftRadius,
+          borderBottomRightRadius: props.borderBottomRightRadius
+        }]} />
         {props.children}
       </View>
     </KeyboardAvoidingView>
@@ -20,15 +23,15 @@ const CustomContent = (props) => {
 }
 
 const Styles = StyleSheet.create({
-  container:{
-    flex:1,
+  container: {
+    flex: 1,
   },
   children: {
-    backgroundColor:Colors.primary,
-    width:'100%',
+    backgroundColor: Colors.primary,
+    width: '100%',
     height: 70,
     position: 'absolute',
-    top: 0,   
+    top: 0,
     zIndex: 0,
     alignItems: 'center',
   },
@@ -36,11 +39,15 @@ const Styles = StyleSheet.create({
 
 CustomContent.propTypes = {
   color: PropTypes.string,
+  borderBottomLeftRadius: PropTypes.number,
+  borderBottomRightRadius: PropTypes.number,
   contentContainerStyle: PropTypes.object,
 };
 
 CustomContent.defaultProps = {
   color: Colors.white,
+  borderBottomLeftRadius: 0,
+  borderBottomRightRadius: 0,
   contentContainerStyle: {},
 };
 

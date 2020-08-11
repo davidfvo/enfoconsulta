@@ -1,21 +1,11 @@
 import React, { Component } from "react";
-import {
-    View,
-    Text,
-    Image,
-    StyleSheet,
-    FlatList,
-    ScrollView
-} from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import Card from "../../components/dashboard-content/custom-cardMenu"
+import { FlatList } from 'react-native';
 import { connect } from "react-redux";
-import Content from "../../components/content/Content"
-import Header from "../../components/dashboard-content/dashboard-header"
-import Container from "../../components/container/Container"
-import { image } from "./DashboardContast"
-import Colors from "../../themes/Colors"
-import Separator from "../../components/custom-separator/CustomSeparator"
+import Container from "../../components/container/Container";
+import Content from "../../components/content/Content";
+import Card from "../../components/dashboard-content/custom-cardMenu";
+import Header from "../../components/dashboard-content/dashboard-header";
+import { image } from "./DashboardContast";
 
 class Dashboard extends Component {
 
@@ -45,8 +35,8 @@ class Dashboard extends Component {
                         renderItem={({ item }) => this.renderItem(item)}
                         scrollEnabled={true}
                         showsVerticalScrollIndicator={false}
-                        style={{alignSelf:'center'}}
-                     />
+                        style={{ alignSelf: 'center' }}
+                    />
                 </Content>
             </Container>
         )

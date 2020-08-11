@@ -10,9 +10,10 @@ export default {
   primary: '#78B259', //00BBEC
   primaryDark: '#2763a6',
   success: 'green',
-  error: '#FFFFFF', //FDB062
+  error: 'red', //FDB062
   white: '#FFFFFF',
   black: '#000000',
+  gray: '#6D6565',
 
   //Opacity
   primaryTransparent: 'rgba(0,187,236,0.5)',
@@ -20,7 +21,7 @@ export default {
   middleTransparent: 'rgba(255,255,255,0.5)',
   transparent70: 'rgba(255,255,255,0.7)',
   backgroundOpaque: '#009EE3', // backgroundOpaque rgba(0,187,236, 0.9)
-
+  textColor:'#A6A4A6',
   //NativeBase label for IOS
   nativeBaseIosGrey: '#8e8e93',
   nativeBaseIosDarkGrey: '#5E5E5E',

@@ -10,6 +10,10 @@ import { isMountedRef, navigationRef } from "../../services/NavigationService";
 import Login from "../login/Login";
 import Dashboard from "../dashboard/Dashboard"
 import SplashScreen from "./splash-screen/SplashScreen";
+import RegisterScreen from "../register/RegisterScreen"
+import ChangePassword from "../settings/change-password/ChangePassword"
+import ClientInfo from "../settings/client-info/ClientInfo";
+import SettingsScreen from "../settings/SettingsScreen";
 import config from '../../../QBConfig';
 import { appStart } from '../../stores/quick-blox/actions';
 
@@ -29,12 +33,20 @@ import { appStart } from '../../stores/quick-blox/actions';
 const Stack = createStackNavigator();
 const AppNav = () => {
   return (
-    <Stack.Navigator initialRouteName="Login" headerMode="none">
+    <Stack.Navigator initialRouteName="SettingsScreen" headerMode="none">
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
       {/* Auth */}
       <Stack.Screen name="Login" component={Login} />
       {/* <Stack.Screen name="Dashboard" component={AppNavDashboard} /> */}
       <Stack.Screen name="Dashboard" component={Dashboard} />
+
+      <Stack.Screen name="RegisterScreen" component={RegisterScreen}/>
+
+      <Stack.Screen name="ChangePassword" component={ChangePassword}/>
+
+      <Stack.Screen name="ClientInfoScreen" component={ClientInfo}/>
+
+      <Stack.Screen name="SettingsScreen" component={SettingsScreen}/>
 
     </Stack.Navigator>
   );
