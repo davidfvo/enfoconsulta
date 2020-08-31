@@ -6,7 +6,7 @@ import Content from "../../../components/content/Content";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import Perfil from "../../../assets/perfil.png"
 import Colors from "../../../themes/Colors"
-import TextInput from "../../../components/custom-textInput/textUserInput";
+import TextInput from "../../../components/custom-textInput/CustomUserInput";
 import CustomButton from "../../../components/custom-Button/CustomButton";
 
 class ClientInfoScreen extends Component {

@@ -194,7 +194,6 @@
 				BEA554F78C1BE0710573612A /* Pods-enfoconsulta-tvOSTests.debug.xcconfig */,
 				D4655406839347E927A4EC05 /* Pods-enfoconsulta-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

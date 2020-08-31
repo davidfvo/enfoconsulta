@@ -33,21 +33,16 @@ import { appStart } from '../../stores/quick-blox/actions';
 const Stack = createStackNavigator();
 const AppNav = () => {
   return (
-    <Stack.Navigator initialRouteName="SettingsScreen" headerMode="none">
+    <Stack.Navigator initialRouteName="Login" headerMode="none">
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
       {/* Auth */}
       <Stack.Screen name="Login" component={Login} />
       {/* <Stack.Screen name="Dashboard" component={AppNavDashboard} /> */}
       <Stack.Screen name="Dashboard" component={Dashboard} />
-
-      <Stack.Screen name="RegisterScreen" component={RegisterScreen}/>
-
-      <Stack.Screen name="ChangePassword" component={ChangePassword}/>
-
-      <Stack.Screen name="ClientInfoScreen" component={ClientInfo}/>
-
-      <Stack.Screen name="SettingsScreen" component={SettingsScreen}/>
-
+      <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+      <Stack.Screen name="ChangePassword" component={ChangePassword} />
+      <Stack.Screen name="ClientInfoScreen" component={ClientInfo} />
+      <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
     </Stack.Navigator>
   );
 };

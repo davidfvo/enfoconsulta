@@ -8,6 +8,7 @@ import Colors from '../../themes/Colors';
 import CustomInput from "../../components/custom-textInput/CustomInput";
 import CustomPicker from "../../components/custom-picker/CustomPicker";
 import CustomButton from "../../components/custom-Button/CustomButton";
+import Header from "../../components/header/Header";
 
 class RegisterScreen extends Component {
 
@@ -22,14 +23,11 @@ class RegisterScreen extends Component {
 
         return (
             <Container>
-                <View style={{ padding: 20 }}>
-                    <TouchableOpacity>
-                        <Icon name={'arrow-back'} size={35} color={Colors.white} />
-                    </TouchableOpacity>
+                    <Header />
+                <Content  contentContainerStyle={{ padding: 20 }}>
                     <View>
                         <Text style={{ textAlign: 'center', color: Colors.white, fontSize: 25 }}>Registro</Text>
                     </View>
-                </View>
                 <View style={{ marginHorizontal: 25 }}>
                     <CustomInput placeholder={'Nombre'} />
                     <CustomInput placeholder={'Apellido'} />
@@ -52,6 +50,7 @@ class RegisterScreen extends Component {
                 <View style={{ marginTop: 10 }}>
                     <CustomButton title={'Registrarte'} />
                 </View>
+                </Content>
             </Container>
         )
     }

@@ -12,9 +12,9 @@ const size = {
   input: 18,
   xLarge: 26,
   large: 20,
-  h3: 30,
-  h2: 34,
-  h1: 38,
+  h3: 24,
+  h2: 26,
+  h1: 28,
 };
 
 const weight = {

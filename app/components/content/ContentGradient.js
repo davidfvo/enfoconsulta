@@ -5,15 +5,19 @@ import Colors from '../../themes/Colors';
 import { IS_IOS } from '../../utils/StyleHelpers';
 import CheckRender from '../security/CheckRender';
 import { Metrics } from '../../themes';
+import { LinearGradient } from 'expo-linear-gradient'
 
-const Content = (props) => {
+const ContentGradient = (props) => {
   return (
     <KeyboardAvoidingView
       behavior={'padding'}
-      style={[Styles.container, { backgroundColor: props.color }]}
+      style={[Styles.container]}
       keyboardVerticalOffset={IS_IOS ? 0 : -300}
     >
-      <View style={[Styles.subContainer, props.contentContainerStyle, { backgroundColor: 'transparent'}]}>
+      <LinearGradient
+        style={[Styles.subContainer, props.contentContainerStyle]}
+        colors={props.color}
+      >
         <CheckRender allowed={props.greenBar}>
           <View style={[Styles.children, {
             borderBottomLeftRadius: props.borderBottomLeftRadius,
@@ -21,7 +25,7 @@ const Content = (props) => {
           }]} />
         </CheckRender>
         {props.children}
-      </View>
+      </LinearGradient>
     </KeyboardAvoidingView>
   );
 }
@@ -35,6 +39,9 @@ const Styles = StyleSheet.create({
     paddingHorizontal: Metrics.mLg,
     paddingVertical: Metrics.mLg
   },
+  flex1: {
+    flex: 1,
+  },
   children: {
     backgroundColor: Colors.primary,
     width: '100%',
@@ -46,18 +53,18 @@ const Styles = StyleSheet.create({
   },
 })
 
-Content.propTypes = {
-  color: PropTypes.string,
+ContentGradient.propTypes = {
+  color: PropTypes.array,
   borderBottomLeftRadius: PropTypes.number,
   borderBottomRightRadius: PropTypes.number,
-  contentContainerStyle: PropTypes.object,
+  contentGradientContainerStyle: PropTypes.object,
 };
 
-Content.defaultProps = {
-  color: Colors.white,
+ContentGradient.defaultProps = {
+  color: [Colors.white, Colors.white],
   borderBottomLeftRadius: 0,
   borderBottomRightRadius: 0,
-  contentContainerStyle: {},
+  contentGradientContainerStyle: {},
 };
 
-export default Content;
+export default ContentGradient;

@@ -42,6 +42,7 @@ export function* login(request) {
   // Save the user in the storage
   yield call(deviceStorage.saveItem, 'user', JSON.stringify(result));
   yield put(AuthActions.loginSuccess(result));
+  NavigationService.navigate('Dashboard');
 }
 
 export function* QBAuth(request){

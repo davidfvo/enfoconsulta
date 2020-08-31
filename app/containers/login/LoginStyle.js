@@ -2,9 +2,12 @@ import { Dimensions, StyleSheet } from 'react-native';
 import Colors from '../../themes/Colors';
 import Metrics from '../../themes/Metrics';
 import { viewportWidth, viewportHeight } from '../../utils/StyleHelpers';
+import { Fonts } from '../../themes';
 
 export default StyleSheet.create({
-  container: {},
+  content: {
+    justifyContent: 'center',
+  },
   backgroundContent: {
     width: viewportWidth.width,
     height: viewportHeight.height,
@@ -15,7 +18,13 @@ export default StyleSheet.create({
     paddingBottom: Metrics.mLg,
   },
   title: {
-    color: Colors.white,
+    color: Colors.primary,
+    fontSize: Fonts.size.h1,
+    fontWeight: "bold",
+  },
+  subTitle: {
+    color: Colors.primary,
+    fontSize: Fonts.size.h2,
     fontWeight: "bold",
   },
 
@@ -33,5 +42,13 @@ export default StyleSheet.create({
   },
   buttonViewHeight: {
     height: 15,
+  },
+
+  textButtonContainer: {
+    alignItems: 'center'
+  },
+  textButton: {
+    color: Colors.white,
+    textDecorationLine: 'underline'
   },
 });

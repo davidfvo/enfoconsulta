@@ -24,6 +24,7 @@
     "expo-splash-screen": "~0.3.1",
     "expo-status-bar": "^1.0.2",
     "expo-updates": "~0.2.10",
+    "immutability-helper": "^3.1.1",
     "prop-types": "^15.7.2",
     "quickblox-react-native-sdk": "^0.5.4-beta",
     "react": "16.13.1",

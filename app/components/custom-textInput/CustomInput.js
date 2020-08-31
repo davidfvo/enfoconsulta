@@ -26,14 +26,11 @@ import { exp } from 'react-native-reanimated';
 
 const Styles = StyleSheet.create ({
     container: {
-      paddingHorizontal: Metrics.mXxl,
-      paddingVertical: IS_IOS ? Metrics.mMd : 0,
-      paddingLeft: IS_IOS ? null : 15,
+      paddingHorizontal: Metrics.mXl,
       borderRadius:20,
       height: 60,
       justifyContent: 'center',
       backgroundColor:Colors.white,
-      marginVertical:8
     },
   
     input: {

@@ -1,100 +1,101 @@
-/**
- * @providesModule login
- */
-import React, { Component } from "react";
+import update from 'immutability-helper';
+import React, { useState } from "react";
 import {
-  StatusBar, Text,
-  TextInput, View, TouchableOpacity, SafeAreaView
+  Text,
+  View
 } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient'
 import { connect } from "react-redux";
-import CustomLoading from "../../components/error-loading/Loading";
+import Container from "../../components/container/Container";
+import Content from "../../components/content/Content";
+import CustomButton from "../../components/custom-Button/CustomButton";
+import CustomSeparator from "../../components/custom-separator/CustomSeparator";
+import CustomUserInput from "../../components/custom-textInput/CustomUserInput";
+import CustomInput from "../../components/custom-textInput/CustomInput";
 import AuthActions from "../../stores/auth/Actions";
-import Colors from "../../themes/Colors";
-import Metrics from "../../themes/Metrics";
 import Styles from "./LoginStyle";
+import { Metrics, Colors } from '../../themes';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import ContentGradient from '../../components/content/ContentGradient';
+import NavigationService from '../../services/NavigationService';
 
-export class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: "",
-    };
-  }
+const Login = props => {
+  const [state, setState] = useState({
+    username: "",
+    password: "",
+  })
+  const [passwordRef, setPasswordRef] = useState(null)
 
-  validateCredentials() {
-    if (this.props.isLoading) {
+  const validateCredentials = () => {
+    if (props.isLoading) {
       return;
     }
     const request = {
-      username: this.state.username,
-      password: this.state.password,
+      username: state.username,
+      password: state.password,
     }
 
-    this.props.login(request)
+    props.login(request)
   }
 
-  changeTextHandler = key => value => {
-    this.setState({ [key]: value });
+  //Value change handlers
+  const onStateChange = (key) => value => {
+    setState(prevState => update(prevState, { [key]: { $set: value } }));
   };
 
-  changeBoolHandler = key => value => {
-    this.setState(prevState => ({ [key]: !prevState[key] }));
-  };
-
-  render() {
-    return (
-      <SafeAreaView>
-        <StatusBar backgroundColor={Colors.primary} barStyle='light-content'/>
-          <View style={{
-                alignContent: "center",
-                justifyContent: "center"
-              }}>
-            <Text style={Styles.title}>Iniciar sesión</Text>
-          </View>
-          <TextInput
-            placeholder={`Usuario del médico`}
-            blurOnSubmit={false}
-            returnKeyType="next"
-            value={this.state.username}
-            onChangeText={this.changeTextHandler("username")}
-            onSubmitEditing={() => {
-              this.password._root.focus();
-            }}
-          />
-          <TextInput
-            placeholder="Contraseña"
-            secureTextEntry={true}
-            value={this.state.password}
-            onChangeText={this.changeTextHandler("password")}
-            returnKeyType="go"
-            setRef={input => {
-              this.password = input;
-            }}
-            onSubmitEditing={() => this.validateCredentials()}
-          />
-          <View style={{ paddingHorizontal: Metrics.mXxl }}>
-            <View style={Styles.buttonViewHeight} />
-            <TouchableOpacity
-              style={{backgroundColor: Colors.primary}}
-              onPress={() => this.validateCredentials()}
-            >
-              {this.props.isLoading ? (
-                <CustomLoading
-                  size="small"
-                  color={Colors.white}
-                  style={{}}
-                />
-              ) : (
-                <Text uppercase={false} style={{}}>
-                  Entrar
-                </Text>
-              )}
-            </TouchableOpacity>
-          </View>
-      </SafeAreaView>
-    );
-  }
+  return (
+    <Container>
+      <ContentGradient color={[Colors.white, Colors.gray]} contentContainerStyle={Styles.content}>
+        <View style={{
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+          <Text style={Styles.title}>ENFOCONSULTA</Text>
+          <Text style={Styles.subTitle}>Inicio</Text>
+        </View>
+        <CustomSeparator height={Metrics.mXxl}/>
+        <CustomInput
+          placeholder='Usuario'
+          blurOnSubmit={false}
+          returnKeyType="next"
+          value={state.username}
+          onChangeText={onStateChange("username")}
+          onSubmitEditing={() => {
+            passwordRef._root.focus();
+          }}
+        />
+        <CustomSeparator />
+        <CustomInput
+          placeholder="Contraseña"
+          secureTextEntry={true}
+          value={state.password}
+          onChangeText={onStateChange("password")}
+          returnKeyType="go"
+          setRef={input => {
+            setPasswordRef(input);
+          }}
+          onSubmitEditing={validateCredentials}
+        />
+        <CustomSeparator height={Metrics.mXxl}/>
+        <CustomButton
+          style={{backgroundColor: Colors.primary}}
+          onPress={validateCredentials}
+          isLoading={props.isLoading}
+          title='Login'
+        />
+        <CustomSeparator />
+        <CustomButton
+          onPress={() => NavigationService.navigate('RegisterScreen')}
+          isLoading={props.isLoading}
+          title='Crear cuenta'
+        />
+        <CustomSeparator />
+        <TouchableOpacity style={Styles.textButtonContainer} onPress={() => {}}>
+          <Text style={Styles.textButton}>Olvidé mi contraseña</Text>
+        </TouchableOpacity>
+      </ContentGradient>
+    </Container>
+  );
 }
 
 const mapStateToProps = state => ({
